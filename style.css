@@ -152,43 +152,88 @@ nav a:hover{
     }
 }
 
-/* Prevent zoom / overflow issues */
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-}
+/* ===== MOBILE RESPONSIVE FIX (CORRECTED) ===== */
 
-/* Mobile fix */
 @media (max-width: 768px) {
 
+    body {
+        overflow-x: hidden;
+    }
+
     header {
+        padding: 10px 15px;
+    }
+
+    .header-container {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
         text-align: center;
+        gap: 10px;
     }
 
     nav {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        font-size: 12px;
+        gap: 5px;
+    }
+
+    .slider {
+        padding: 10px;
+    }
+
+    .slider img {
+        height: 200px;
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
         gap: 10px;
     }
 
-    .content h1 {
-        font-size: 40px;
+    button {
+        width: 90%;
     }
 
-    .content h3 {
-        font-size: 20px;
-    }
-
-    .content p {
-        font-size: 16px;
-    }
-
-    .cards {
+    .info-section {
         flex-direction: column;
+        padding: 10px;
         gap: 20px;
-        bottom: 20px;
+    }
+
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .form-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .radio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-right {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .qr-code-img {
+        width: 60px;
+        height: 60px;
     }
 }
