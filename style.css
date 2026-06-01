@@ -8,34 +8,41 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow: hidden; /* Phone එකේදී scroll / ඇද වෙන්නේ නැති වෙන්න */
     background: #000;
 }
 
 header {
     width: 100%;
-    padding: 25px 8%;
+    padding: 20px 4%;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 100;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Mobile වල උඩ සිට පහලට පෙලගැස්වීම */
     align-items: center;
+    gap: 12px;
 }
 
 .logo {
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap; /* Links වැඩි වුනොත් ඊලඟ පේලියට යාමට */
+    justify-content: center;
+    gap: 12px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
+    font-size: 14px;
     transition: .3s;
 }
 
@@ -46,15 +53,10 @@ nav a:hover {
 .btn {
     background: #d9d43a;
     border: none;
-    padding: 12px 25px;
-    font-size: 15px;
+    padding: 8px 20px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #fff;
 }
 
 .hero {
@@ -67,11 +69,10 @@ nav a:hover {
     justify-content: center;
     align-items: center;
     position: relative;
-    /* Smooth fading transition effect between image changes */
-    transition: background-image 0.8s ease-in-out; 
+    transition: background-image 0.8s ease-in-out; /* Smooth slideshow transition */
 }
 
-/* Optional Dark Overlay to make text perfectly readable */
+/* Dark overlay එකක්: Text එක පැහැදිලිව පෙනීමට */
 .hero::after {
     content: '';
     position: absolute;
@@ -85,122 +86,63 @@ nav a:hover {
     color: white;
     position: relative;
     z-index: 2;
-    padding: 0 20px;
+    padding: 0 15px;
+    margin-top: 40px; /* Header එකට යට නොවීමට */
 }
 
 .content h1 {
-    font-size: 80px;
+    font-size: 44px; /* Phone screen වලට සුදුසු ප්‍රමාණය */
     color: #d9d43a;
-    margin-bottom: 15px;
-    font-weight: 800;
+    margin-bottom: 8px;
+    font-weight: bold;
 }
 
 .content h3 {
-    font-size: 32px;
-    margin-bottom: 10px;
-    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: normal;
 }
 
 .content p {
-    font-size: 20px;
+    font-size: 14px;
     opacity: 0.9;
 }
 
 .cards {
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 80px;
+    flex-direction: column; /* යට තියෙන cards 3 එකක් යට එකක් සිටින සේ */
+    align-items: center;
+    gap: 15px;
     z-index: 100;
 }
 
 .card {
-    text-align: center;
-    color: white;
+    display: flex;
+    flex-direction: row; /* Icon එක සහ Text එක එක ලඟින් තැබීමට */
+    align-items: center;
+    gap: 15px;
+    width: 80%;
+    max-width: 280px;
 }
 
 .card i {
-    width: 70px;
-    height: 70px;
+    width: 45px;
+    height: 45px;
     border: 2px solid #d9d43a;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    margin-bottom: 15px;
     color: #d9d43a;
-    font-size: 22px;
-    background: rgba(0,0,0,0.3);
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.5); /* පසුබිම පැහැදිලිව පෙනීමට */
 }
 
 .card h4 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
-}
-
-/* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 4%;
-    }
-
-    .logo {
-        font-size: 24px;
-    }
-
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    nav a {
-        margin: 0 8px;
-        font-size: 14px;
-    }
-
-    .btn {
-        padding: 8px 18px;
-        font-size: 14px;
-    }
-
-    .content {
-        width: 100%;
-        top: 5%; /* Shifts down slightly to make room for absolute column navbar */
-    }
-
-    .content h1 {
-        font-size: 42px;
-    }
-
-    .content h3 {
-        font-size: 20px;
-    }
-
-    .content p {
-        font-size: 15px;
-    }
-
-    .cards {
-        flex-direction: column;
-        gap: 15px;
-        bottom: 25px;
-    }
-
-    .card i {
-        width: 55px;
-        height: 55px;
-        font-size: 18px;
-        margin-bottom: 5px;
-    }
-
-    .card h4 {
-        font-size: 14px;
-    }
+    color: white;
 }
