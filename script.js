@@ -1,6 +1,6 @@
 const hero = document.querySelector(".hero");
 
-// Ensure your file paths and casing match your project directory precisely
+// Images folder එකේ නම් නිවැරදිව මෙලෙසම තිබිය යුතුය.
 const images = [
     "images/1.jpg.jpeg",
     "images/02.jpg.jpeg",
@@ -12,7 +12,7 @@ const images = [
 let current = 0;
 
 function changeSlide() {
-    // FIXED: Used proper template literals using backticks ``
+    // බැක්ටික් (``) භාවිතා කර ඇති නිසා code එක හරියටම ක්‍රියා කරයි
     hero.style.backgroundImage = `url('${images[current]}')`;
 
     current++;
@@ -22,8 +22,8 @@ function changeSlide() {
     }
 }
 
-// Run immediately on page load
+// මුලින්ම පලවෙනි photo එක load වීමට
 changeSlide();
 
-// Runs every 3.5 seconds for a natural, smooth presentation pace
+// සෑම තත්පර 3.5 කට වරක් පසුබිම් පින්තූරය මාරු වේ
 setInterval(changeSlide, 3500);
