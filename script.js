@@ -1,6 +1,5 @@
 const hero = document.querySelector(".hero");
 
-
 const images = [
     "images/1.jpg.jpeg",
     "images/02.jpg.jpeg",
@@ -12,7 +11,6 @@ const images = [
 let current = 0;
 
 function changeSlide() {
-   
     hero.style.backgroundImage = `url('${images[current]}')`;
 
     current++;
@@ -24,4 +22,4 @@ function changeSlide() {
 
 changeSlide();
 
-setInterval(changeSlide, 3500);
+setInterval(changeSlide, 3000);
