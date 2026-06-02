@@ -13,7 +13,6 @@ html, body {
     overflow-x: hidden;
 }
 
-/* Header Elements */
 header {
     width: 100%;
     padding: 15px 10px;
@@ -56,7 +55,6 @@ nav a {
     cursor: pointer;
 }
 
-/* Hero & Background Slideshow Setup */
 .hero {
     width: 100%;
     height: 100vh;
@@ -70,7 +68,6 @@ nav a {
     transition: background-image 0.8s ease-in-out;
 }
 
-/* Dark overlay for readability */
 .hero::after {
     content: '';
     position: absolute;
@@ -86,13 +83,12 @@ nav a {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Content උඩටත්, Cards යටටත් තල්ලු කරයි */
+    justify-content: space-between; 
     align-items: center;
     text-align: center;
-    padding: 140px 15px 40px 15px; /* ඉහල සහ පහල නිසි පරතරය */
+    padding: 140px 15px 40px 15px;
 }
 
-/* Text Styling */
 .content h1 {
     font-size: 40px;
     color: #d9d43a;
@@ -110,13 +106,12 @@ nav a {
     opacity: 0.8;
 }
 
-/* HORIZONTAL CARDS DESIGN */
 .cards {
     width: 100%;
     display: flex;
-    flex-direction: row; /* එක පේලියට (Horizontal) තැබීම */
+    flex-direction: row;
     justify-content: center;
-    gap: 25px; /* Cards අතර පරතරය */
+    gap: 25px; 
 }
 
 .card {
@@ -130,12 +125,12 @@ nav a {
 
 .card i {
     color: #d9d43a;
-    font-size: 20px; /* Icon ප්‍රමාණය තරමක් විශාල කලා */
+    font-size: 20px;
 }
 
 .card h4 {
-    font-size: 11px; /* Mobile එකට fit වෙන්න අකුරු ප්‍රමාණය හැදුවා */
+    font-size: 11px; 
     font-weight: normal;
     color: white;
-    white-space: nowrap; /* පේලි කැඩී යාම වැලැක්වීමට */
+    white-space: nowrap; 
 }
