@@ -8,11 +8,12 @@
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-body {
+html, body {
+    width: 100%;
+    min-height: 100vh;
     background: #022c22;
     color: white;
     overflow-x: hidden;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -58,11 +59,11 @@ nav a.active, nav a:hover {
 }
 
 /* ==========================================================================
-   3. FIXED STAGE ENGINE - HANDS SCALE & POSITIONING (UPDATED)
+   3. FIXED STAGE ENGINE - HANDS SCALE & POSITIONING
    ========================================================================== */
 .hero {
     width: 100%;
-    height: 88vh;
+    min-height: 100vh;
     position: relative;
     background: radial-gradient(circle at center, #064e3b 0%, #022c22 100%);
     display: flex;
@@ -70,7 +71,7 @@ nav a.active, nav a:hover {
     justify-content: center;
 }
 
-/* වම් පැත්තේ සත්ව අත - පොඩි කර ඈත් කර ඇත */
+/* වම් පැත්තේ සත්ව අත */
 .animal-hand-layer {
     position: absolute;
     top: 15%;                  
@@ -85,7 +86,7 @@ nav a.active, nav a:hover {
     pointer-events: none;
 }
 
-/* දකුණු පැත්තේ මිනිස් අත - පොඩි කර ඈත් කර ඇත */
+/* දකුණු පැත්තේ මිනිස් අත */
 .human-hand-static {
     position: absolute;
     top: 5%;                   
@@ -120,7 +121,7 @@ nav a.active, nav a:hover {
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding: 120px 5% 20px 5%;
+    padding: 140px 5% 40px 5%;
 }
 
 /* ==========================================================================
@@ -450,4 +451,94 @@ nav a.active, nav a:hover {
 .trust-badge p {
     font-size: 11px;
     opacity: 0.7;
+}
+
+/* ==========================================================================
+   8. MOBILE RESPONSIVE MEDIA QUERIES (UPDATED FOR PHONE VERSION)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Header & Navigation adjustments */
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    /* Hands scaling adjustment to prevent overlap on small screens */
+    .animal-hand-layer, .human-hand-static {
+        width: 30%;
+        height: 40%;
+    }
+    .animal-hand-layer { top: 25%; }
+    .human-hand-static { top: 15%; }
+
+    .main-container {
+        padding: 160px 15px 30px 15px;
+    }
+
+    /* Brand typography scaling */
+    .brand-title {
+        font-size: 36px;
+    }
+    
+    .content h3 {
+        font-size: 16px;
+    }
+
+    /* Grid/Flex elements switching to dynamic 1-column layouts */
+    .dashboard-grid, .cards, .tier-grid, .pricing-grid, .benefits-list {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .info-box-right p {
+        max-width: 100%;
+        margin-bottom: 45px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    /* Modal adjustments for small heights */
+    .white-modal-card {
+        padding: 25px 20px 20px 20px;
+        border-radius: 25px 25px 0 0;
+    }
+
+    .tier-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quote-text {
+        font-size: 16px;
+    }
+
+    .price-box h3 {
+        font-size: 20px;
+    }
+
+    .benefits-list ul {
+        width: 100%;
+    }
+
+    /* Footer structure wrap */
+    .trust-footer {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
 }
