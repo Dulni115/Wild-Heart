@@ -1,136 +1,453 @@
-*{
+/* ==========================================================================
+   1. CORE ARCHITECTURE RESET & VARIABLES
+   ========================================================================== */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    background: #000;
+body {
+    background: #022c22;
     color: white;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* ==========================================================================
+   2. STICKY DYNAMIC TRANSPARENT HEADER NAVIGATION
+   ========================================================================== */
 header {
     width: 100%;
-    padding: 15px 10px;
+    padding: 20px 50px;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 100;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    background: rgba(0, 0, 0, 0.4);
 }
 
 .logo {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 900;
     letter-spacing: 1px;
 }
 
 nav {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
+    gap: 30px;
 }
 
 nav a {
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    font-size: 13px;
-}
-
-.btn {
-    background: #d9d43a;
-    border: none;
-    padding: 6px 15px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
-    cursor: pointer;
+    text-transform: uppercase;
 }
 
+nav a.active, nav a:hover {
+    color: #ccff33;
+    border-bottom: 2px solid #ccff33;
+    padding-bottom: 2px;
+}
+
+/* ==========================================================================
+   3. FIXED STAGE ENGINE - HANDS SCALE & POSITIONING (UPDATED)
+   ========================================================================== */
 .hero {
     width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 88vh;
     position: relative;
+    background: radial-gradient(circle at center, #064e3b 0%, #022c22 100%);
     display: flex;
     align-items: center; 
     justify-content: center;
-    transition: background-image 0.8s ease-in-out;
 }
 
-.hero::after {
-    content: '';
+/* වම් පැත්තේ සත්ව අත - පොඩි කර ඈත් කර ඇත */
+.animal-hand-layer {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    top: 15%;                  
+    left: 0;
+    width: 38%;                
+    height: 60%;               
+    background-size: contain;  
+    background-position: left center;
+    background-repeat: no-repeat;
     z-index: 1;
+    transition: background-image 0.6s ease-in-out;
+    pointer-events: none;
+}
+
+/* දකුණු පැත්තේ මිනිස් අත - පොඩි කර ඈත් කර ඇත */
+.human-hand-static {
+    position: absolute;
+    top: 5%;                   
+    right: 0;
+    width: 38%;                
+    height: 60%;               
+    background-image: url('./images/WEB Hand.png');
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   4. SPA SCREEN CONTAINER MANAGEMENT PANELS
+   ========================================================================== */
+.view-panel {
+    display: none !important;
+}
+
+.view-panel.active {
+    display: flex !important;
 }
 
 .main-container {
     position: relative;
-    z-index: 2;
+    z-index: 5;
     width: 100%;
     height: 100%;
-    display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding: 140px 15px 40px 15px;
+    padding: 120px 5% 20px 5%;
 }
 
-.content h1 {
-    font-size: 40px;
-    color: #d9d43a;
-    margin-bottom: 5px;
-    font-weight: bold;
+/* ==========================================================================
+   5. COMPONENT DESIGNS: COMPACT HEADINGS & HOME DATA CARDS
+   ========================================================================== */
+.content {
+    margin-bottom: 15px;
+}
+
+.brand-title {
+    font-size: 54px;
+    color: #ccff33;
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
 .content h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-top: -5px;
 }
 
-.content p {
-    font-size: 13px;
-    opacity: 0.8;
+.tagline {
+    font-size: 14px;
+    color: #ccff33;
+    margin-top: 5px;
 }
 
-.cards {
-    width: 100%;
+.action-row {
     display: flex;
-    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    border: none;
+    padding: 12px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-lime {
+    background: #ccff33;
+    color: #022c22;
+}
+
+.btn-dark-green {
+    background: #064e3b;
+    color: #ccff33;
+}
+
+.small-btn {
+    font-size: 13px;
+    padding: 8px 25px;
+}
+
+/* Dashboard Info Cards Grid Layout */
+.dashboard-grid {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    gap: 40px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.info-box-left {
+    border-left: 2px solid #ccff33;
+    padding-left: 15px;
+    flex: 1;
+}
+
+.info-box-left h4 { color: #ccff33; font-size: 18px; margin-bottom: 5px;}
+.info-box-left p { font-size: 13px; line-height: 1.4; margin-bottom: 5px; opacity: 0.9; }
+
+.info-box-right {
+    background: rgba(6, 78, 59, 0.6);
+    border: 1px solid rgba(204, 255, 51, 0.3);
+    border-radius: 12px;
+    padding: 15px 20px;
+    flex: 1;
+    position: relative;
+}
+
+.info-box-right h4 { color: #ccff33; font-size: 18px; margin-bottom: 5px; }
+.info-box-right p { font-size: 13px; max-width: 75%; }
+
+.btn-visit {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background: #ccff33;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Animal Profiler Showcase Base */
+.cards {
+    display: flex;
     justify-content: center;
-    gap: 25px; 
+    gap: 25px;
+    width: 100%;
+    max-width: 900px;
 }
 
 .card {
+    background: rgba(2, 44, 34, 0.85);
+    border: 1px solid #064e3b;
+    border-radius: 20px;
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 12px;
+}
+
+.card h4 { font-size: 15px; color: #ccff33; margin-bottom: 4px; }
+.card .meta-txt { font-size: 12px; color: #a7f3d0; margin-bottom: 12px; }
+.card .status-lbl { font-size: 12px; font-weight: bold; }
+.card .status-lbl.ready { color: #ccff33; }
+.card .status-lbl.rehab { color: #fbbf24; }
+
+/* ==========================================================================
+   6. SECTIONS 2 & 3: SLIDE-UP MODAL OVERLAY ARCHITECTURE
+   ========================================================================== */
+.tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.quote-text {
+    font-size: 20px;
+    color: #ccff33;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.white-modal-card {
+    background: #ffffff;
+    border-radius: 40px 40px 0 0;
+    width: 100%;
+    max-width: 950px;
+    padding: 35px 40px 20px 40px;
+    color: #022c22;
+    margin-top: auto;
+}
+
+.modal-drag-bar {
+    width: 60px;
+    height: 8px;
+    background: #064e3b;
+    border-radius: 4px;
+    margin: -15px auto 30px auto;
+}
+
+/* Grid Layout for Tier Pricing Selections */
+.tier-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.tier-card {
+    background: #064e3b;
+    border-radius: 20px;
+    padding: 30px 20px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    flex: 1;
-    max-width: 100px;
-}
-
-.card i {
-    color: #d9d43a;
-    font-size: 20px;
-}
-
-.card h4 {
-    font-size: 11px; 
-    font-weight: normal;
     color: white;
-    white-space: nowrap; 
+}
+
+.tier-icon {
+    width: 60px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.tier-card h3 {
+    font-size: 16px;
+    color: #ccff33;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+.btn-choose {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 35px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-choose:hover {
+    background: white;
+    color: #064e3b;
+}
+
+.modal-footer-note {
+    font-size: 14px;
+    color: #064e3b;
+    font-weight: bold;
+    border: 1.5px solid #064e3b;
+    border-radius: 25px;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Section 3 Layout Panels Style definitions */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.price-box {
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    color: #022c22;
+}
+
+.price-box.lime-bg { background: #ccff33; }
+.price-box.light-lime-bg { background: #e2fca2; }
+.price-box h3 { font-size: 26px; font-weight: 900; }
+.price-box p { font-size: 15px; font-weight: bold; margin-top: 2px; }
+
+/* Benefits Content Module Stylesheet rules */
+.benefits-section {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.benefits-section h4 {
+    font-size: 14px;
+    color: #064e3b;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.benefits-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.benefits-list ul {
+    list-style: none;
+    width: 48%;
+}
+
+.benefits-list li {
+    font-size: 14px;
+    font-weight: bold;
+    color: #064e3b;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.benefits-list li::before {
+    content: '●';
+    position: absolute;
+    left: 0;
+    color: #064e3b;
+}
+
+/* ==========================================================================
+   7. TRUSTED BADGE CONTAINER FOOTER
+   ========================================================================== */
+.trust-footer {
+    background: #011f18;
+    width: 100%;
+    margin-top: auto;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.trust-badge img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.trust-badge h5 {
+    color: #ccff33;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.trust-badge p {
+    font-size: 11px;
+    opacity: 0.7;
 }
