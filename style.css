@@ -19,7 +19,7 @@ html, body {
 }
 
 /* ==========================================================================
-   2. STICKY DYNAMIC TRANSPARENT HEADER NAVIGATION
+   2. HEADER NAVIGATION (DESKTOP)
    ========================================================================== */
 header {
     width: 100%;
@@ -59,19 +59,19 @@ nav a.active, nav a:hover {
 }
 
 /* ==========================================================================
-   3. FIXED STAGE ENGINE - HANDS SCALE & POSITIONING
+   3. HERO ENVIRONMENTS & DYNAMIC HANDS LAYERS (DESKTOP)
    ========================================================================== */
 .hero {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 80px); /* Footer එකට ඉඩ තබා Hero එක සකසයි */
     position: relative;
     background: radial-gradient(circle at center, #064e3b 0%, #022c22 100%);
     display: flex;
     align-items: center; 
     justify-content: center;
+    flex-grow: 1;
 }
 
-/* වම් පැත්තේ සත්ව අත */
 .animal-hand-layer {
     position: absolute;
     top: 15%;                  
@@ -86,7 +86,6 @@ nav a.active, nav a:hover {
     pointer-events: none;
 }
 
-/* දකුණු පැත්තේ මිනිස් අත */
 .human-hand-static {
     position: absolute;
     top: 5%;                   
@@ -102,7 +101,7 @@ nav a.active, nav a:hover {
 }
 
 /* ==========================================================================
-   4. SPA SCREEN CONTAINER MANAGEMENT PANELS
+   4. SPA SCREEN VIEW PANELS CONTROL
    ========================================================================== */
 .view-panel {
     display: none !important;
@@ -125,7 +124,7 @@ nav a.active, nav a:hover {
 }
 
 /* ==========================================================================
-   5. COMPONENT DESIGNS: COMPACT HEADINGS & HOME DATA CARDS
+   5. VIEW PANEL COMPONENTS (DESKTOP)
    ========================================================================== */
 .content {
     margin-bottom: 15px;
@@ -181,7 +180,6 @@ nav a.active, nav a:hover {
     padding: 8px 25px;
 }
 
-/* Dashboard Info Cards Grid Layout */
 .dashboard-grid {
     display: flex;
     justify-content: space-between;
@@ -225,7 +223,6 @@ nav a.active, nav a:hover {
     cursor: pointer;
 }
 
-/* Animal Profiler Showcase Base */
 .cards {
     display: flex;
     justify-content: center;
@@ -262,7 +259,7 @@ nav a.active, nav a:hover {
 .card .status-lbl.rehab { color: #fbbf24; }
 
 /* ==========================================================================
-   6. SECTIONS 2 & 3: SLIDE-UP MODAL OVERLAY ARCHITECTURE
+   6. MODAL OVERLAYS TIERS & PRICING
    ========================================================================== */
 .tier-header {
     display: flex;
@@ -299,7 +296,6 @@ nav a.active, nav a:hover {
     margin: -15px auto 30px auto;
 }
 
-/* Grid Layout for Tier Pricing Selections */
 .tier-grid {
     display: flex;
     gap: 20px;
@@ -357,7 +353,6 @@ nav a.active, nav a:hover {
     margin-top: 10px;
 }
 
-/* Section 3 Layout Panels Style definitions */
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -377,7 +372,6 @@ nav a.active, nav a:hover {
 .price-box h3 { font-size: 26px; font-weight: 900; }
 .price-box p { font-size: 15px; font-weight: bold; margin-top: 2px; }
 
-/* Benefits Content Module Stylesheet rules */
 .benefits-section {
     text-align: left;
     padding: 0 10px;
@@ -417,16 +411,17 @@ nav a.active, nav a:hover {
 }
 
 /* ==========================================================================
-   7. TRUSTED BADGE CONTAINER FOOTER
+   7. TRUSTED BADGE CONTAINER FOOTER (DESKTOP)
    ========================================================================== */
 .trust-footer {
     background: #011f18;
     width: 100%;
-    margin-top: auto;
     padding: 20px 50px;
     display: flex;
     justify-content: space-between;
     border-top: 1px solid rgba(255,255,255,0.05);
+    position: relative; /* මැදට කඩා වැදීම වැළැක්වීමට */
+    z-index: 10;
 }
 
 .trust-badge {
@@ -454,91 +449,161 @@ nav a.active, nav a:hover {
 }
 
 /* ==========================================================================
-   8. MOBILE RESPONSIVE MEDIA QUERIES (UPDATED FOR PHONE VERSION)
+   8. MOBILE RESPONSIVE MEDIA QUERIES (FIXED FOR MOBILE VIEWPORTS)
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Header & Navigation adjustments */
+    /* Header & Navbar stacking properly */
     header {
         padding: 15px 20px;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        position: relative; /* සිරස්ව ඉඩ ගැනීමට absolute එක ඉවත් කරා */
     }
     
     nav {
-        gap: 15px;
+        gap: 12px;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     nav a {
-        font-size: 12px;
+        font-size: 11px;
     }
 
-    /* Hands scaling adjustment to prevent overlap on small screens */
-    .animal-hand-layer, .human-hand-static {
-        width: 30%;
-        height: 40%;
+    /* Hero Height Fix to avoid overflowing on mobile devices */
+    .hero {
+        min-height: auto;
+        padding-bottom: 40px;
     }
-    .animal-hand-layer { top: 25%; }
-    .human-hand-static { top: 15%; }
 
+    /* Hands Scale & Position Adjustment - පින්තූර කැපෙන්නේ නැති වෙන්න */
+    .animal-hand-layer {
+        top: 50px;
+        width: 120px; /* Mobile එකට ගැලපෙන ස්ථාවර ප්‍රමාණය */
+        height: 180px;
+    }
+
+    .human-hand-static {
+        top: 20px;
+        width: 120px; /* Mobile එකට ගැලපෙන ස්ථාවර ප්‍රමාණය */
+        height: 180px;
+    }
+
+    /* Container padding reset for mobile screens */
     .main-container {
-        padding: 160px 15px 30px 15px;
+        padding: 40px 15px 20px 15px;
     }
 
-    /* Brand typography scaling */
+    /* Headings responsiveness */
     .brand-title {
-        font-size: 36px;
+        font-size: 32px;
     }
     
     .content h3 {
-        font-size: 16px;
+        font-size: 15px;
     }
 
-    /* Grid/Flex elements switching to dynamic 1-column layouts */
-    .dashboard-grid, .cards, .tier-grid, .pricing-grid, .benefits-list {
-        flex-direction: column;
-        grid-template-columns: 1fr;
-        gap: 20px;
+    /* Buttons row layout adjustment */
+    .action-row {
         width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 25px;
+        font-size: 15px;
+    }
+
+    /* Grid system conversions to 1-column layouts */
+    .dashboard-grid {
+        flex-direction: column;
+        gap: 20px;
+        text-align: left;
+        margin-bottom: 25px;
+    }
+
+    .info-box-left {
+        border-left: 3px solid #ccff33;
+        padding-left: 10px;
+    }
+
+    .info-box-right {
+        padding: 15px;
     }
 
     .info-box-right p {
         max-width: 100%;
-        margin-bottom: 45px;
+        margin-bottom: 40px; /* Button එකට ඉඩ තැබීමට */
+    }
+
+    .btn-visit {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    /* Cards stacking */
+    .cards {
+        flex-direction: column;
+        gap: 15px;
     }
 
     .card {
         max-width: 100%;
     }
 
-    /* Modal adjustments for small heights */
+    /* Modal card adaptations */
     .white-modal-card {
-        padding: 25px 20px 20px 20px;
+        padding: 25px 15px;
         border-radius: 25px 25px 0 0;
     }
 
     .tier-header {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        margin-bottom: 15px;
     }
 
     .quote-text {
-        font-size: 16px;
+        font-size: 15px;
+    }
+
+    .tier-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .tier-card {
+        padding: 20px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr; /* 1 Column grid layout */
+        gap: 12px;
+    }
+
+    .price-box {
+        padding: 15px;
     }
 
     .price-box h3 {
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    .benefits-list {
+        flex-direction: column;
+        gap: 0;
     }
 
     .benefits-list ul {
         width: 100%;
     }
 
-    /* Footer structure wrap */
+    /* Footer structure stacked on mobile seamlessly */
     .trust-footer {
         flex-direction: column;
-        padding: 20px;
+        padding: 20px 15px;
         gap: 15px;
+        align-items: flex-start;
     }
 }
