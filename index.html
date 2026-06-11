@@ -12,44 +12,165 @@
     <header>
         <div class="logo">WILD HEARTS</div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Adopt</a>
+            <a href="#" class="active">Home</a>
             <a href="#">Animals</a>
-            <a href="#">Impact</a>
+            <a href="#">Members</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
+            <a href="#">T & C</a>
         </nav>
-        <button class="btn">Adopt Now</button>
     </header>
 
     <section class="hero">
-        <div class="main-container">
-            
+        <div class="animal-hand-layer"></div>
+        <div class="human-hand-static"></div>
+
+        <div id="view-home" class="main-container view-panel active">
             <div class="content">
-                <h1>WILD HEARTS</h1>
-                <h3>Gift From The Wild Campaign</h3>
-                <p>Adopt an animal to release</p>
+                <h1 class="brand-title">WILD HEARTS</h1>
+                <h3>GIFT FROM THE WILD</h3>
+                <p class="tagline">Adopt an animal to release</p>
+            </div>
+
+            <div class="action-row">
+                <button class="btn btn-lime">REGISTER</button>
+                <button class="btn btn-lime" id="adopt-now-trigger">ADOPT NOW</button>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="info-box-left">
+                    <h4>Through Wild Hearts,</h4>
+                    <p>Your symbolic adoption becomes a powerful act of protection, hope, and love for Sri Lanka's wildlife.</p>
+                    <strong>Become a Wild Hearts Member Today!</strong>
+                </div>
+                <div class="info-box-right">
+                    <h4>Success Stories</h4>
+                    <p>Meet MANDUKA, SIMON & 37 others we've successfully released</p>
+                    <button class="btn-visit">Visit</button>
+                </div>
             </div>
 
             <div class="cards">
                 <div class="card">
-                    <i class="fa-regular fa-heart"></i>
-                    <h4>Adopt Animal</h4>
+                    <img src="./images/Wild Cat.png" alt="Rusty-Spotted Cat">
+                    <h4>Rusty-Spotted Cat</h4>
+                    <span class="meta-txt">Female | Age 2 years</span>
+                    <span class="status-lbl ready">Status: Ready for adoption</span>
                 </div>
-
                 <div class="card">
-                    <i class="fa-solid fa-plus"></i>
-                    <h4>Heal Animal</h4>
+                    <img src="./images/Deer.png" alt="Axis Deer Cub">
+                    <h4>Axis Deer Cub</h4>
+                    <span class="meta-txt">Male | Age 2 months</span>
+                    <span class="status-lbl ready">Status: Ready for adoption</span>
                 </div>
-
                 <div class="card">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <h4>Release Animal</h4>
+                    <img src="./images/Injured Turtle.png" alt="Loggerhead Sea Turtle">
+                    <h4>Loggerhead Sea Turtle</h4>
+                    <span class="meta-txt">Female | Age 30+ years</span>
+                    <span class="status-lbl rehab">Status: In Rehabilitation</span>
                 </div>
             </div>
-
         </div>
+
+        <div id="view-tiers" class="main-container view-panel">
+            <div class="tier-header">
+                <button class="btn btn-lime small-btn">ADOPT NOW</button>
+                <h2 class="quote-text">"EVERY LIFE IS A GIFT"</h2>
+            </div>
+            
+            <div class="white-modal-card">
+                <div class="modal-drag-bar"></div>
+                <div class="tier-grid">
+                    <div class="tier-card">
+                        <img src="./images/Money Icon.png" class="tier-icon" alt="Money">
+                        <h3>ADOPTION CHAMPION</h3>
+                        <button class="btn-choose" id="champion-choose-trigger">CHOOSE</button>
+                    </div>
+                    <div class="tier-card">
+                        <img src="./images/Money Icon.png" class="tier-icon" alt="Money">
+                        <h3>MONTHLY GUARDIAN</h3>
+                        <button class="btn-choose">CHOOSE</button>
+                    </div>
+                    <div class="tier-card">
+                        <img src="./images/Money Icon.png" class="tier-icon" alt="Money">
+                        <h3>ONE - TIME FRIEND</h3>
+                        <button class="btn-choose">CHOOSE</button>
+                    </div>
+                </div>
+                <p class="modal-footer-note">Every contribution, big or small, makes a huge impact on Sri Lankan wildlife conservation</p>
+            </div>
+        </div>
+
+        <div id="view-pricing" class="main-container view-panel">
+            <div class="tier-header">
+                <button class="btn btn-dark-green small-btn">ADOPTION CHAMPION</button>
+                <h2 class="quote-text">"EVERY LIFE IS A GIFT"</h2>
+            </div>
+
+            <div class="white-modal-card">
+                <div class="modal-drag-bar"></div>
+                <div class="pricing-grid">
+                    <div class="price-box lime-bg">
+                        <h3>$ 5 - (LKR 1,500)</h3>
+                        <p>1 Month</p>
+                    </div>
+                    <div class="price-box light-lime-bg">
+                        <h3>$ 15 - (LKR 5,000)</h3>
+                        <p>3 Months</p>
+                    </div>
+                    <div class="price-box light-lime-bg">
+                        <h3>$ 30 - (LKR 10,000)</h3>
+                        <p>6 Months</p>
+                    </div>
+                    <div class="price-box light-lime-bg">
+                        <h3>$ 60 - (LKR 20,000)</h3>
+                        <p>12 Months</p>
+                    </div>
+                </div>
+
+                <div class="benefits-section">
+                    <h4>BENEFITS INCLUDE:</h4>
+                    <div class="benefits-list">
+                        <ul>
+                            <li>Government approved adoption certificate</li>
+                            <li>Animal profile card</li>
+                            <li>Monthly updates</li>
+                        </ul>
+                        <ul>
+                            <li>Thank You Gifts</li>
+                            <li>Special ID card <small>(for higher tiers)</small></li>
+                            <li>Special Discounts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
+
+    <footer class="trust-footer">
+        <div class="trust-badge">
+            <img src="./images/Safe Guard Icon.png" alt="Secure">
+            <div>
+                <h5>100% SECURE</h5>
+                <p>Your donation is safe and encrypted</p>
+            </div>
+        </div>
+        <div class="trust-badge">
+            <img src="./images/Medle Icon.png" alt="Transparent">
+            <div>
+                <h5>TRANSPARENT</h5>
+                <p>We ensure your support creates real impact</p>
+            </div>
+        </div>
+        <div class="trust-badge">
+            <img src="./images/People Group.png" alt="Wildlife">
+            <div>
+                <h5>TOGETHER FOR WILDLIFE</h5>
+                <p>Because every life is a gift</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
